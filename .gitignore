@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Archivos de entorno (variables sensibles)
+.env
+
+# Archivos creados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos del editor
+.vscode/
+.idea/
+
+# Archivos de logs
+*.log
+
+# Salida de compilaciones / empaquetado
+dist/
+build/
+*.egg-info/
+
+# Archivos de Docker opcionales
+*.pid
+*.sock
+
+# Archivos de Gradio temporales
+gradio_cached_examples/
+gradio/  # si lo usas con espacio persistente
+
+# Archivos de datos temporales
+*.db
+*.sqlite3
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Archivos de pruebas o resultados temporales
+*.out
+*.tmp
