@@ -1,8 +1,9 @@
 import gradio as gr
+import os
 from models.assistant import responder_pregunta
 from data.cases import user_cases
 
-def launch_ui():
+def launch_ui(server_name="127.0.0.1", server_port=7860):
     with gr.Blocks() as demo:
         gr.Markdown("# 🛡️ Asistente ISO 27000 — Casos de Usuario")
 
@@ -25,4 +26,4 @@ def launch_ui():
         caso_dropdown.change(fn=mostrar_descripcion, inputs=caso_dropdown, outputs=caso_texto)
         gr.Button("Responder").click(fn=procesar, inputs=[pregunta, modelo, caso_dropdown], outputs=respuesta)
 
-    demo.launch()
+    demo.launch(server_name=server_name, server_port=server_port)
