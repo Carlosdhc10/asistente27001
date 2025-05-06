@@ -1,17 +1,28 @@
-# data/cases.py
-
 user_cases = {
     "Caso 1 - FinanSeguros S.A.": (
-        "FinanSeguros S.A. ofrece servicios financieros online. "
-        "Recientemente sufrió un incidente donde un empleado envió por error información confidencial de clientes. "
-        "No tiene controles de acceso ni políticas de seguridad implementadas. Se busca implementar un SGSI según ISO/IEC 27001."
+        "**Nombre de la organización:** FinanSeguros S.A. (sector financiero)\n"
+        "**Contexto:** FinanSeguros S.A. es una entidad financiera de tamaño medio que opera exclusivamente en el entorno digital. Su plataforma ofrece servicios de créditos personales, inversiones y seguros a través de aplicaciones móviles y web. Posee una plantilla de 300 empleados y más de 100,000 clientes activos. Su ecosistema digital maneja operaciones sensibles en tiempo real y se encuentra en constante crecimiento.\n"
+        "**Activos de información críticos:** Datos bancarios de clientes (números de cuenta, tarjetas de crédito), historiales de transacciones, credenciales de acceso a plataformas, información personal y crediticia, documentos escaneados y contratos electrónicos.\n"
+        "**Problema:** Un empleado del área de atención al cliente envió accidentalmente un archivo Excel sin cifrar a un proveedor de software, el cual contenía información confidencial de más de 500 clientes. El incidente fue descubierto luego de que varios usuarios reportaran intentos de fraude bancario. La filtración generó múltiples reclamos legales, investigaciones regulatorias y una disminución crítica en la confianza de los clientes.\n"
+        "**Análisis de causa:** Se evidenció que la organización no contaba con controles de clasificación de la información, ni validaciones en el envío de correos. El personal no estaba capacitado en el manejo seguro de datos sensibles, y no existían herramientas de prevención de fugas como DLP. Tampoco se aplicaban políticas de mínimo privilegio ni monitoreo continuo de los canales de comunicación.\n"
+        "**Objetivo:** Fortalecer el sistema de gestión de seguridad de la información mediante un SGSI que establezca políticas claras, controles técnicos y medidas correctivas que permitan cumplir con los requisitos de ISO/IEC 27001, proteger los activos críticos y prevenir futuros incidentes.\n"
     ),
+
     "Caso 2 - EduDigital": (
-        "EduDigital es una plataforma educativa con estudiantes de múltiples países. "
-        "Está preocupada por la privacidad de datos personales y académicos, y quiere cumplir con ISO/IEC 27018 e ISO/IEC 27001."
+        "**Nombre de la organización:** EduDigital (sector educativo, e-learning)\n"
+        "**Contexto:** EduDigital es una plataforma educativa internacional que ofrece cursos online, diplomados y certificaciones en alianza con universidades y centros de formación. Cuenta con una base de más de 200,000 estudiantes distribuidos en América Latina, Europa y Asia. La empresa ha experimentado un crecimiento acelerado durante los últimos tres años, impulsado por la digitalización de la educación.\n"
+        "**Activos de información críticos:** Datos personales de estudiantes y docentes (nombres, correos, direcciones, nacionalidades), evaluaciones, historial académico, diplomas digitales, acceso a clases en vivo, materiales educativos protegidos por copyright.\n"
+        "**Problema:** Varios estudiantes reportaron accesos irregulares a sus cuentas. Tras una investigación, se descubrió que terceros no autorizados habían ingresado utilizando contraseñas filtradas de otros servicios. EduDigital no contaba con autenticación multifactor (MFA) ni verificación de dispositivos. La exposición provocó que se filtrara información de rendimiento académico y contactos personales, afectando la reputación de la plataforma.\n"
+        "**Análisis de causa:** Falta de una política de autenticación fuerte, carencia de mecanismos para detección de accesos anómalos y escasa cultura de seguridad entre usuarios. Los logs de acceso eran incompletos, y no existía una estrategia de gestión de identidad centralizada.\n"
+        "**Objetivo:** Implementar un SGSI que permita proteger la privacidad de datos personales y académicos, fortalecer la infraestructura de autenticación y garantizar el cumplimiento de las normas ISO/IEC 27001 e ISO/IEC 27018, con foco en la protección de información personal en entornos cloud.\n"
     ),
+
     "Caso 3 - SaludProtegida": (
-        "SaludProtegida es un hospital que almacena historiales médicos digitales. "
-        "Quiere implementar un SGSI y cumplir con ISO/IEC 27799 (seguridad de información en salud)."
+        "**Nombre de la organización:** SaludProtegida (sector salud, hospital digital)\n"
+        "**Contexto:** SaludProtegida es una red privada de hospitales y clínicas con presencia nacional. Integra un sistema de información hospitalaria (HIS) para la gestión de historias clínicas electrónicas, laboratorios, farmacia y teleconsultas. Atiende un promedio de 30,000 pacientes al mes y trabaja con aseguradoras nacionales e internacionales.\n"
+        "**Activos de información críticos:** Historias clínicas electrónicas, diagnósticos médicos, imágenes radiológicas, datos de aseguramiento, registros de tratamientos y recetas, datos biométricos y personales de pacientes.\n"
+        "**Problema:** Una actualización del sistema principal generó una configuración errónea en los permisos de acceso, exponiendo temporalmente los historiales médicos de cientos de pacientes en un entorno accesible por internet. La brecha fue detectada por casualidad durante una auditoría interna. Aunque fue corregida en pocas horas, se confirmó que hubo descargas no autorizadas desde direcciones IP externas.\n"
+        "**Análisis de causa:** El error fue producto de una mala gestión del ciclo de vida de cambios (falta de pruebas en entornos aislados), ausencia de políticas de gestión de configuraciones seguras, y falta de control en los endpoints que accedían al sistema. No existían mecanismos de detección temprana de exposición pública ni segmentación adecuada de la red.\n"
+        "**Objetivo:** Diseñar e implementar un SGSI que asegure la confidencialidad, integridad y disponibilidad de los datos clínicos, optimice la gestión de cambios, y cumpla con ISO/IEC 27001 y la norma ISO/IEC 27799, orientada específicamente a la información en salud.\n"
     )
 }

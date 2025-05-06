@@ -2,14 +2,16 @@ import os
 from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
 from openai import OpenAI
+from utils.helpers import evaluar_respuesta  # Ya está importada
 
+# Cargar variables de entorno
 load_dotenv()
 
 # API Keys
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
 
-# Clientes
+# Inicializar clientes
 client_openai = OpenAI(api_key=OPENAI_API_KEY)
 hf_model_id = "HuggingFaceH4/zephyr-7b-beta"
 hf_client = InferenceClient(model=hf_model_id, token=HUGGINGFACE_API_TOKEN)
@@ -37,11 +39,30 @@ def responder_con_huggingface(pregunta):
     except Exception as e:
         return f"[Hugging Face] Error: {str(e)}"
 
-def responder_pregunta(pregunta, modelo, contexto):
+def responder_pregunta(pregunta, modelo, contexto, respuesta_usuario=None):
     entrada = f"{contexto}\n\nPregunta: {pregunta}"
+    
     if modelo == "OpenAI GPT-3.5":
-        return responder_con_openai(entrada)
+        respuesta_modelo = responder_con_openai(entrada)
     elif modelo == "Hugging Face Zephyr":
-        return responder_con_huggingface(entrada)
+        respuesta_modelo = responder_con_huggingface(entrada)
     else:
         return "Modelo no reconocido."
+
+    if respuesta_usuario:
+        porcentaje, recomendacion = evaluar_respuesta(respuesta_modelo, respuesta_usuario)
+        return respuesta_modelo, porcentaje, recomendacion
+
+    return respuesta_modelo
+
+def comparar_respuestas(respuesta_asistente, respuesta_usuario):
+    """
+    Compara las respuestas del asistente y la del usuario.
+    Devuelve un porcentaje de coincidencia y una recomendación.
+    """
+    # Aquí se puede utilizar alguna lógica más avanzada para comparar las respuestas.
+    # Para este ejemplo, compararemos simplemente si las respuestas son iguales.
+    if respuesta_asistente.strip().lower() == respuesta_usuario.strip().lower():
+        return 100, "Respuesta correcta"
+    else:
+        return 50, "La respuesta podría mejorarse. Revisa la norma ISO 27000 para más detalles."
